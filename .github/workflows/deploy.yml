@@ -5,14 +5,15 @@ on:
       - main
       - dev
 env: #GLOBAL ENV VARS
-  MONGODB_DB_NAME: demo
+  MONGODB_DB_NAME: express-demo
 jobs:
   test:
     environment: testing
     env: #SPECIFIC ENV VARS
-      MONGODB_CLUSTER_ADDRESS:
-      MONGODB_USERNAME:
-      MONGODB_PASSWORD:
+      MONGODB_CLUSTER_ADDRESS: cluster0.dlqgq.mongodb.net
+      MONGODB_USERNAME: patake
+      MONGODB_PASSWORD: yw6n3tdb3XcQids
+      PORT: 8080
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
