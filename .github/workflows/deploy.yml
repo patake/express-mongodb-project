@@ -14,7 +14,7 @@ jobs:
     #  image: node:16 # https://hub.docker.com/_/node
     env: #SPECIFIC ENV VARS
       MONGODB_CONNECTION_PROTOCOL: mongodb
-      MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017
+      MONGODB_CLUSTER_ADDRESS: 127.0.0.1
       MONGODB_USERNAME: root
       MONGODB_PASSWORD: example
       PORT: 8080
