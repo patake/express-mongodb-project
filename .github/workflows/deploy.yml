@@ -10,20 +10,22 @@ jobs:
   test:
     environment: testing
     runs-on: ubuntu-latest
-    container: 
-      image: node:16 # https://hub.docker.com/_/node
+    #container: 
+    #  image: node:16 # https://hub.docker.com/_/node
+    env: #SPECIFIC ENV VARS
+      MONGODB_CONNECTION_PROTOCOL: mongodb
+      MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017
+      MONGODB_USERNAME: root
+      MONGODB_PASSWORD: example
+      PORT: 8080
     services:
       mongodb: #CAN BE ANYTHING, USE BELOW ON MONGODB_CONNECTION_PROTOCOL and MONGODB_CLUSTER_ADDRESS
         image: mongo # https://hub.docker.com/_/mongo
+        ports:
+          - 27017:27017
         env:
           MONGO_INITDB_ROOT_USERNAME: root # https://hub.docker.com/_/mongo#:~:text=restart%3A%20always%0A%20%20%20%20environment%3A-,MONGO_INITDB_ROOT_USERNAME,-%3A%20root%0A%20%20%20%20%20%20MONGO_INITDB_ROOT_PASSWORD%3A%20example
-          MONGO_INITDB_ROOT_PASSWORD: password # DONT BE ONLINE AFTER THE JOB IS FINISHED, SO DONT WORRY
-    env: #SPECIFIC ENV VARS
-      MONGODB_CONNECTION_PROTOCOL: mongodb
-      MONGODB_CLUSTER_ADDRESS: mongodb
-      MONGODB_USERNAME: root
-      MONGODB_PASSWORD: password
-      PORT: 8080
+          MONGO_INITDB_ROOT_PASSWORD: example # DONT BE ONLINE AFTER THE JOB IS FINISHED, SO DONT WORRY
     steps:
       - name: Get Code
         uses: actions/checkout@v3
